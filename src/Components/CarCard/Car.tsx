@@ -1,0 +1,126 @@
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
+import Icon2 from 'react-native-vector-icons/MaterialIcons';
+import React from 'react';
+import assests from '../../assets';
+import { Heart, LocationEdit } from 'lucide-react-native';
+import { colors } from '../../theme/color';
+
+const Car = () => {
+  return (
+    <Pressable style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image
+          source={assests.car1}
+          style={styles.carImage}
+          resizeMode="contain"
+        />
+      </View>
+
+      <View style={styles.datacontainer}>
+        <View style={styles.rowSpaceBetween}>
+          <Text style={styles.carTitle}>Ferrari-FF</Text>
+          <View style={styles.rowCenter}>
+            <Text style={styles.ratingText}>5.0</Text>
+            <Icon name="star" size={10} color={'orange'} />
+          </View>
+        </View>
+
+        <View style={styles.rowCenter}>
+          <LocationEdit size={10} />
+          <Text style={styles.locationText}>Washington DC</Text>
+        </View>
+
+        <View style={styles.rowSpaceBetween}>
+          <View style={styles.rowCenter}>
+            <Icon2 name="event-seat" size={12} />
+            <Text style={styles.detailText}>4 Seats</Text>
+          </View>
+          <View style={styles.rowCenter}>
+            <Text style={styles.detailText}>
+              <Text style={styles.bold}>$</Text>200/Day
+            </Text>
+          </View>
+        </View>
+      </View>
+
+      <Pressable style={styles.heartIcon}>
+        <Icon name="heart" size={12} />
+      </Pressable>
+    </Pressable>
+  );
+};
+
+export default Car;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    width: 170,
+    padding: 10,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    borderRadius: 10,
+    flexDirection: 'column',
+    gap: 4,
+    position: 'relative',
+  },
+  imageContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  carImage: {
+    width: 170,
+    height: 120,
+    transform: [{ scale: 0.9 }],
+  },
+  datacontainer: {
+    flexDirection: 'column',
+    gap: 8,
+  },
+  rowCenter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  rowSpaceBetween: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  carTitle: {
+    letterSpacing: 1,
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  ratingText: {
+    letterSpacing: 1,
+    fontSize: 10,
+  },
+  locationText: {
+    letterSpacing: 1,
+    fontSize: 10,
+  },
+  detailText: {
+    letterSpacing: 1,
+    fontSize: 12,
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
+  heartIcon: {
+    width: 30,
+    height: 30,
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    borderWidth: 1,
+    borderRadius: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: colors.border,
+  },
+});

@@ -12,6 +12,8 @@ const assests = {
     royalrolance : require('./image/rolls.jpg'),
     audi : require('./image/audi.png'),
     bugati : require('./image/bugati.png'),
+    car1 : require('./image/white_ferrari.png'),
+    seat : require('./image/seat.png'),
 
 }
 
