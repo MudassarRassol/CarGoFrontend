@@ -25,7 +25,7 @@ const Home = () => {
         <SearchFilter />
         <View style={{ marginHorizontal: 10 }}>
           <Text style={{ fontSize: 20, fontWeight: 'bold', letterSpacing: 1 }}>
-            Brand
+            Brands
           </Text>
         </View>
         <ScrollView

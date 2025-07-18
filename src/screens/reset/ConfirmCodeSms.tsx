@@ -108,7 +108,7 @@ const ConfirmCodeSms = () => {
 
         <Text
           style={{ marginHorizontal: 20, textAlign: 'center', marginTop: 20 }}
-          onPress={() => navigation.navigate('SignIn')}
+          onPress={() => navigation.navigate('VarifyPhoneNumber')}
         >
          Didn’t receive the OTP? Resend.
         </Text>

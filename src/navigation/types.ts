@@ -6,5 +6,6 @@ export type RootStackParamList = {
   Reset : undefined;
   ConfirmCode : undefined;
   Home : undefined;
-  ConfirmCodeSms : undefined
+  ConfirmCodeSms : undefined;
+  VarifyPhoneNumber : undefined
 };

@@ -14,12 +14,13 @@ import ConfirmCode from '../screens/reset/ConfirmCode';
 import Home from '../screens/Home/Home';
 import ConfirmCodeSms from '../screens/reset/ConfirmCodeSms';
 const Stack = createStackNavigator<RootStackParamList>();
+import VarifyPhoneNumber from '../screens/reset/VarifyPhoneNumber';
 const StackNavigator = () => {
   return (
     <Stack.Navigator
       // initialRouteName="Home"
       screenOptions={{
-        headerShown: false
+        headerShown: true
       }}
     >
       <Stack.Screen name="ScreenOne" component={Onboarding} />
@@ -30,6 +31,7 @@ const StackNavigator = () => {
       <Stack.Screen name='ConfirmCode' component={ConfirmCode}  />
        <Stack.Screen name='Home' component={Home} />
        <Stack.Screen name='ConfirmCodeSms' component={ConfirmCodeSms} />
+       <Stack.Screen name='VarifyPhoneNumber' component={VarifyPhoneNumber} />
     </Stack.Navigator>
   );
 };
