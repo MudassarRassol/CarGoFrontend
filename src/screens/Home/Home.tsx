@@ -1,13 +1,11 @@
 import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import React from 'react';
 import Topheaderapp from '../../Components/topheaderapp/Topheaderapp';
-import { Search, Settings2 } from 'lucide-react-native';
-import { colors } from '../../theme/color';
-import { Image } from 'react-native';
 import assests from '../../assets';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import Brands from '../../Components/Brands/Brands';
 import HomePagesCarShowCase from '../../Components/HomepageCarShowCase/HomePagesCarShowCase';
+import HomeNeaberyCar from '../../Components/HomeNeaberyCar/HomeNeaberyCar';
 
 const carBrands: (keyof typeof assests)[] = [
   'tesla',
@@ -21,7 +19,7 @@ const carBrands: (keyof typeof assests)[] = [
 
 const Home = () => {
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+    <ScrollView showsVerticalScrollIndicator={false}   contentContainerStyle={{ flexGrow: 1 }}>
       <Topheaderapp />
       <SearchFilter />
       <Brands brandList={carBrands} />

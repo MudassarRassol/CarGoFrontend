@@ -6,8 +6,8 @@ const Stack = createStackNavigator();
 
 const AuthScreen = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="MainTabs" component={BottomTabs} />
+    <Stack.Navigator screenOptions={{ headerShown: false , animation : 'reveal_from_bottom' }}>
+      <Stack.Screen  name="MainTabs" component={BottomTabs} />
     </Stack.Navigator>
   );
 };

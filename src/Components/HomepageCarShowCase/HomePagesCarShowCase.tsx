@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import HomeBestCar from '../HomeBestCar/HomeBestCar';
+import HomeNeaberyCar from '../HomeNeaberyCar/HomeNeaberyCar';
 
 const HomePagesCarShowCase = () => {
   return (
@@ -14,6 +15,7 @@ const HomePagesCarShowCase = () => {
         }}
       >
         <HomeBestCar/>
+        <HomeNeaberyCar/>
       </View>
     </View>
   );
