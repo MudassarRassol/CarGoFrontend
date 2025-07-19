@@ -2,19 +2,12 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { ArrowRight } from 'lucide-react-native';
 import Car from '../CarCard/Car';
+import UpperCardSection from '../UpperCardSection.tsx/UpperCardSection';
 
 const HomeBestCar = () => {
   return (
     <View >
-      <View style={styles.uppertitle}>
-        <Text style={[styles.innertext, { fontWeight: 'bold', fontSize: 14 }]}>
-          Best Car
-        </Text>
-        <View style={styles.textcon}>
-          <Text style={styles.innertext}>View All</Text>
-          <ArrowRight size={12} />
-        </View>
-      </View>
+      <UpperCardSection title={'Best Cars'} />
         <Text style={styles.text}>Available</Text>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carcontainer}  >
         <Car />

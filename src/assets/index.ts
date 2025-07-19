@@ -14,7 +14,13 @@ const assests = {
     bugati : require('./image/bugati.png'),
     car1 : require('./image/white_ferrari.png'),
     seat : require('./image/seat.png'),
-    car2 : require ('./image/m8.png') 
+    car2 : require ('./image/m8.png'),
+    slide1 : require('./image/s1.jpg'),
+    slide2 : require('./image/s2.jpg'),
+    slide3 : require('./image/s3.jpg'),
+    slide4 : require('./image/s4.jpg'),
+    slide5 : require('./image/s5.jpg'),
+
 
 }
 

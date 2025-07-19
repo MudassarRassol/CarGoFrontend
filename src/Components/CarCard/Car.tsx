@@ -1,12 +1,18 @@
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
+import Icon3 from 'react-native-vector-icons/EvilIcons';
 import React from 'react';
 import assests from '../../assets';
 import { Heart, LocationEdit } from 'lucide-react-native';
 import { colors } from '../../theme/color';
 
-const Car = () => {
+type Props = {
+  bookingbutton?: boolean;
+};
+
+const Car = ({ bookingbutton }: Props) => {
+  const [filled, setFilled] = React.useState(false);
   return (
     <Pressable style={styles.container}>
       <View style={styles.imageContainer}>
@@ -30,8 +36,20 @@ const Car = () => {
           <LocationEdit size={10} />
           <Text style={styles.locationText}>Washington DC</Text>
         </View>
+        {
+          bookingbutton ? (
+            <View style={styles.rowSpaceBetween}>
+            <View style={styles.rowCenter}>
+            <Text style={styles.detailText}>
+              <Text style={styles.bold}>$</Text>200/Day
+            </Text>
+          </View>
+          <Pressable style={{backgroundColor : 'black' , paddingHorizontal : 10 , paddingVertical : 5 , borderRadius : 100}}>
+            <Text style={{color : 'white' , fontSize :11 , letterSpacing : 1}}>Book Now</Text>
+          </Pressable>
 
-        <View style={styles.rowSpaceBetween}>
+        </View>
+          ) : <View style={styles.rowSpaceBetween}>
           <View style={styles.rowCenter}>
             <Icon2 name="event-seat" size={12} />
             <Text style={styles.detailText}>4 Seats</Text>
@@ -42,10 +60,13 @@ const Car = () => {
             </Text>
           </View>
         </View>
+        }
       </View>
 
-      <Pressable style={styles.heartIcon}>
-        <Icon name="heart" size={12} />
+      <Pressable style={styles.heartIcon} onPress={() => setFilled(!filled)} >
+        {
+          filled ? <Icon name="heart" size={12} /> : <Icon3 name="heart" size={12} />
+        }
       </Pressable>
     </Pressable>
   );

@@ -5,24 +5,15 @@ import assests from '../../assets';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import Brands from '../../Components/Brands/Brands';
 import HomePagesCarShowCase from '../../Components/HomepageCarShowCase/HomePagesCarShowCase';
-import HomeNeaberyCar from '../../Components/HomeNeaberyCar/HomeNeaberyCar';
 
-const carBrands: (keyof typeof assests)[] = [
-  'tesla',
-  'lambo',
-  'ferrari',
-  'bmw',
-  'royalrolance',
-  'audi',
-  'bugati',
-];
+
 
 const Home = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}   contentContainerStyle={{ flexGrow: 1 }}>
       <Topheaderapp />
       <SearchFilter />
-      <Brands brandList={carBrands} />
+      <Brands  horizontal={false} />
       <HomePagesCarShowCase/>
     </ScrollView>
   );

@@ -3,6 +3,8 @@ import React from 'react';
 import { Search, Settings2 } from 'lucide-react-native';
 import { colors } from '../../theme/color';
 
+
+
 const SearchFilter = () => {
   return (
     <View style={styles.container}>
