@@ -1,11 +1,12 @@
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, Pressable } from 'react-native';
 import React from 'react';
 import { Search, Settings2 } from 'lucide-react-native';
 import { colors } from '../../theme/color';
+import { ISearchFilter } from './Ipropes';
 
 
 
-const SearchFilter = () => {
+const SearchFilter = ({onFilterPress}:ISearchFilter) => {
   return (
     <View style={styles.container}>
       <View style={styles.searchBox}>
@@ -15,9 +16,9 @@ const SearchFilter = () => {
           style={styles.input}
         />
       </View>
-      <View style={styles.filterBox}>
+      <Pressable onPress={onFilterPress} style={styles.filterBox}>
         <Settings2 />
-      </View>
+      </Pressable>
     </View>
   );
 };
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    padding: 10
   },
   searchBox: {
     flexDirection: 'row',

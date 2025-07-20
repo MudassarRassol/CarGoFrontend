@@ -5,20 +5,19 @@ import Brands from '../../Components/Brands/Brands';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import UpperCardSection from '../../Components/UpperCardSection.tsx/UpperCardSection';
 import Car from '../../Components/CarCard/Car';
-import { colors } from '../../theme/color';
-import assests from '../../assets';
 import PopularCars from '../../Components/PopularCars/PopularCars';
-
+import { usefilter } from '../../hook/Filter';
+import Filter from '../View/Filter';
 const Search = () => {
   const car = [1, 2, 3, 4];
-
+  const {showfilter,setshowfilter} = usefilter()
   return (
     <ScrollView
       contentContainerStyle={{ paddingBottom: 100 }}
       showsVerticalScrollIndicator={false}
     >
       <UpperBar hasback={true} title="Search" />
-      <SearchFilter />
+      <SearchFilter onFilterPress={()=>setshowfilter(!showfilter)} />
       <Brands horizontal={true} />
       <UpperCardSection title={'Recommend For You'} />
 
@@ -44,6 +43,12 @@ const Search = () => {
         <PopularCars />
         <PopularCars />
       </ScrollView>
+
+
+      <Filter
+      visible={showfilter}
+      setVisible={setshowfilter}
+      />
     </ScrollView>
   );
 };

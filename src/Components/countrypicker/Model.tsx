@@ -1,24 +1,22 @@
-import { StyleSheet, Text, View , Modal, Pressable} from 'react-native'
-import React from 'react'
-import { IBottomSheetProps } from './Model.propes'
-const Model = ({ visible,
-  setVisible,
-  children}:IBottomSheetProps) => {
+import { StyleSheet, Text, View, Modal, Pressable } from 'react-native';
+import React from 'react';
+import { IBottomSheetProps } from './Model.propes';
+const Model = ({ visible, setVisible, children }: IBottomSheetProps) => {
   return (
-    <Modal 
-    presentationStyle='overFullScreen'
-    animationType='fade'
-    transparent = {true}
-    visible = {visible}
-    onRequestClose={() => setVisible(false)}
+    <Modal
+      presentationStyle="overFullScreen"
+      animationType="fade"
+      transparent={true}
+      visible={visible}
+      onRequestClose={() => setVisible(false)}
     >
-        <Pressable onPress={() => setVisible(false)} style={styles.dim} />
-        <View style={styles.modalOverlay}>{children}</View>
+      <Pressable onPress={() => setVisible(false)} style={styles.dim} />
+      <View style={styles.modalOverlay}>{children}</View>
     </Modal>
-  )
-}
+  );
+};
 
-export default Model
+export default Model;
 
 const styles = StyleSheet.create({
   modalOverlay: {
