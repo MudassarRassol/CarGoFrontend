@@ -48,7 +48,7 @@ const Brands = ({ horizontal }: Props) => {
       <View style={styles.container}>
         {brands.map((item, index) => (
           
-          <Pressable onPress={() => setSelectedKey(index)}  style={ horizontal  ? [styles.brandrow , selectedKey === index ? styles.brandrowselected : null ] : styles.brandcolum} >
+          <Pressable key={item.key} onPress={() => setSelectedKey(index)}  style={ horizontal  ? [styles.brandrow , selectedKey === index ? styles.brandrowselected : null ] : styles.brandcolum} >
             <View style={ horizontal ? styles.brandRowCircle : styles.brandColumCircle}>
               <Image source={item.image} style={horizontal ? styles.brandrowImage : styles.brandImage} resizeMode='contain' />
             </View>

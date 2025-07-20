@@ -15,6 +15,7 @@ const assests = {
     car1 : require('./image/white_ferrari.png'),
     seat : require('./image/seat.png'),
     car2 : require ('./image/m8.png'),
+    car3 : require ('./image/car3.png'),
     slide1 : require('./image/s1.jpg'),
     slide2 : require('./image/s2.jpg'),
     slide3 : require('./image/s3.jpg'),

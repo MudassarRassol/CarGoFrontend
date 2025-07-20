@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../../screens/Home/Home';
-import Profile from '../../screens/Profile/Profile';
+import Profile from '../../screens/Profile/Profile'
 import Icon from 'react-native-vector-icons/Feather';
+
 import { colors } from '../../theme/color';
-import { Bell, BellDotIcon, SearchIcon, UserRoundIcon } from 'lucide-react-native';
+import { Bell, BellDotIcon, MessageCircle, SearchIcon, UserRoundIcon, View } from 'lucide-react-native';
 import Search from '../../screens/Search/Search';
 import Notifications from '../../screens/Notifications/Notifications';
+import Message from '../../screens/Message/Message';
+import { useRoute } from '@react-navigation/native';
+
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 const Tab = createBottomTabNavigator();
 
 const BottomTabs = () => {
+  const route = useRoute();
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({route})=>(
+        {
+        keyboardHidesTabBar: true,
         headerShown: false,
         tabBarShowLabel: false,
+        lazy : false,
+        tabBarHideOnKeyboard: true,
         tabBarStyle: {
           height: 60,
           backgroundColor: 'black',
@@ -32,47 +42,52 @@ const BottomTabs = () => {
           justifyContent: 'center',
           alignItems: 'center',
         },
-      }}
+        tabBarIcon : ({focused, size})=>{
+          let iconName:string = 'home';
+          if (route.name == 'home'){
+            iconName = focused ? 'home' : 'home';
+          }
+          else if (route.name == 'Search') {
+            iconName = focused ? 'search' : 'search';
+          } else if (route.name == 'Message') {
+            iconName = focused ? 'message' : 'message';
+          } else if (route.name == 'Notifications') {
+            iconName = focused ? 'notifications-none' : 'notifications-none';
+          } else if (route.name == 'Profile') {
+            iconName = focused ? 'person-outline' : 'person-outline';
+          }
+          return(
+            <View >
+              <MaterialIcons
+                name={iconName}
+                size={24}
+                color={focused ? colors.white : colors.icon}
+              />
+            </View>
+          )
+        }
+      }
+      )}
     >
       <Tab.Screen
         name="Home"
         component={Home}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="home" color={colors.white} size={20} />
-          ),
-          tabBarActiveTintColor: 'red',
-        }}
       />
       <Tab.Screen
         name="Search"
         component={Search}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <SearchIcon size={20} color={colors.white} />
-          ),
-          tabBarActiveTintColor: 'red',
-        }}
+      />
+      <Tab.Screen
+        name="Message"
+        component={Message}
       />
       <Tab.Screen
         name="Notifications"
         component={Notifications}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Bell size={20} color={colors.white} />
-          ),
-          tabBarActiveTintColor: 'red',
-        }}
       />
       <Tab.Screen
         name="Profile"
         component={Profile}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <UserRoundIcon size={20} color={colors.white} />
-          ),
-          tabBarActiveTintColor: 'red',
-        }}
       />
     </Tab.Navigator>
   );
