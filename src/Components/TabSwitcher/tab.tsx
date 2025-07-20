@@ -27,7 +27,7 @@ const TabSwitch = ({ tabdata, title, onpress }: TabProps) => {
                 <Pressable
                   style={isSelected ? styles.selectedtab : styles.tab}
                   onPress={() => {
-                  
+                    console.log(item);
                     setactivetab(item);
                     onpress?.(item);
                   }}
@@ -51,7 +51,7 @@ export default TabSwitch;
 const styles = StyleSheet.create({
   title: {
     letterSpacing: 1,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   tabcontainer: {

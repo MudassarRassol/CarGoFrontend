@@ -20,7 +20,7 @@ const PopulerCars = () => {
         resizeMode="center"
       />
       <View style ={{flexDirection :'column' , justifyContent : 'center' , gap : 5}}  >
-        <Text style={{letterSpacing : 1}} >Ferrari LaFerrari</Text>
+        <Text style={{letterSpacing : 1 , fontSize : 14}} >Ferrari LaFerrari</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
           <Text>5.0</Text>
           <Icon name="star" size={10} color={'orange'} />
