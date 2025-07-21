@@ -21,13 +21,13 @@ const Search = () => {
       <Brands horizontal={true} />
       <UpperCardSection title={'Recommend For You'} />
 
-      <View style={{ paddingHorizontal: 5 }}>
+      <View style={{ marginHorizontal : 20 }} >
         <View
           style={{
             flexDirection: 'row',
             flexWrap: 'wrap',
-            gap: 4,
-            justifyContent: 'center',
+            gap: 13,
+            justifyContent: 'space-between',
           }}
         >
           {car.map(item => (

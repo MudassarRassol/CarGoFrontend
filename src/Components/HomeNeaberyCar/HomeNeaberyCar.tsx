@@ -41,7 +41,7 @@ const HomeNeaberyCar = () => {
        data={carData}
       numColumns={2}
         keyExtractor={(item, index) => index.toString()}
-        columnWrapperStyle={{ gap: 4, marginBottom: 10 , justifyContent : 'center' }}
+        columnWrapperStyle={{ gap: 4, marginBottom: 10 , justifyContent : 'space-between' , marginHorizontal : 15 }}
         contentContainerStyle={{ padding : 5 , marginBottom : 70 }}
         renderItem={() => <Car />}
         showsVerticalScrollIndicator={false}

@@ -10,7 +10,7 @@ import HomePagesCarShowCase from '../../Components/HomepageCarShowCase/HomePages
 
 const Home = () => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}  contentContainerStyle={{ flexGrow: 1 }}>
+    <ScrollView showsVerticalScrollIndicator={false}   contentContainerStyle={{ flexGrow: 1 }}>
       <Topheaderapp  />
       <SearchFilter />
       <Brands  horizontal={false} />

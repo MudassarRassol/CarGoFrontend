@@ -3,14 +3,22 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react-native';
 import Car from '../CarCard/Car';
 import UpperCardSection from '../UpperCardSection.tsx/UpperCardSection';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../navigation/types';
+
+type navigation = StackNavigationProp<RootStackParamList,'CarScreen'>
+
+
 
 const HomeBestCar = () => {
+  const navigate = useNavigation<navigation>()
   return (
     <View >
       <UpperCardSection title={'Best Cars'} />
         <Text style={styles.text}>Available</Text>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carcontainer}  >
-        <Car />
+        <Car onPress={() => navigate.navigate('CarScreen')} />
         <Car />
         <Car />
         </ScrollView>

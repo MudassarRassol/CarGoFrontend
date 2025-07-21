@@ -155,8 +155,8 @@ const Filter = ({ visible, setVisible }: IFilterProps) => {
               Clear All
             </Text>
           </Pressable>
-          <Pressable style={{backgroundColor : 'black' , padding : 13 , borderRadius : 100 }} >
-           <Text style={{color : 'white'}} >
+          <Pressable style={{backgroundColor : 'black' , padding : 16 , borderRadius : 100 }} >
+           <Text style={{color : 'white' , fontSize : 10}} >
              Show 100+ Cars
            </Text>
           </Pressable>

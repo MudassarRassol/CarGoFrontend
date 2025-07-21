@@ -9,12 +9,13 @@ import { colors } from '../../theme/color';
 
 type Props = {
   bookingbutton?: boolean;
+  onPress? : ()=>void;
 };
 
-const Car = ({ bookingbutton }: Props) => {
+const Car = ({ bookingbutton,onPress }: Props) => {
   const [filled, setFilled] = React.useState(false);
   return (
-    <Pressable style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress} >
       <View style={styles.imageContainer}>
         <Image
           source={assests.car1}
@@ -77,7 +78,7 @@ export default Car;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    width: 170,
+    width: 179.2,
     padding: 10,
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },

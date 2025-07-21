@@ -6,7 +6,9 @@ import Header from '../Header/Header';
 import Icon from 'react-native-vector-icons/Entypo';
 import { colors } from '../../theme/color';
 import Topheaderapp from '../topheaderapp/Topheaderapp';
+import { useNavigation } from '@react-navigation/native';
 const UpperBar = ({ hasback, title }: UpperBarProps) => {
+  const navigation = useNavigation()
   return (
     <View>
       {hasback ? (
@@ -22,6 +24,7 @@ const UpperBar = ({ hasback, title }: UpperBarProps) => {
           }}
         >
           <Pressable
+          onPress={()=>navigation.goBack()}
             style={{
               borderWidth: 1,
               width: 40,
