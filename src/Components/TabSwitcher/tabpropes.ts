@@ -1,7 +1,12 @@
+import { ViewStyle } from "react-native"
+
 export interface TabProps {
     tabdata? : Itab[],
     title : string,
-    onpress? : (e:Itab) => void   
+    onpress? : (e:Itab) => void,
+    flatlistcontainer? : ViewStyle,
+    tab? : ViewStyle
+
 }
 
 

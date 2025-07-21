@@ -5,8 +5,8 @@ const Model = ({ visible, setVisible, children }: IBottomSheetProps) => {
   return (
     <Modal
       presentationStyle="overFullScreen"
-      animationType="fade"
-      transparent={true}
+      animationType='slide'
+      transparent={false}
       visible={visible}
       onRequestClose={() => setVisible(false)}
     >

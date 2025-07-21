@@ -1,4 +1,11 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+} from 'react-native';
 import React, { useState } from 'react';
 import Model from '../../Components/countrypicker/Model';
 import { IFilterProps } from '../../Components/SearchFilter/Ipropes';
@@ -8,19 +15,20 @@ import TabSwitch from '../../Components/TabSwitcher/tab';
 import Slider from '@react-native-community/slider';
 import assests from '../../assets';
 import InputCom from '../../Components/input/Input';
+import Line from './../../Components/line/Line';
+import { Capacity, FuelType, tabdata, tabtime } from './Filterdata';
 const Filter = ({ visible, setVisible }: IFilterProps) => {
-  const tabdata = [
-    { id: 1, label: 'All Cars', value: 'All Cars' },
-    { id: 2, label: 'Regular Cars', value: 'Regular Cars' },
-    { id: 3, label: 'Luxury Cars', value: 'Luxury Cars' },
-  ];
+  const [location, setLocation] = useState<string>('');
 
+  const [min, setmin] = useState(0);
+  const [max, setmax] = useState(5000);
   const [value, setvalue] = useState(0);
 
   return (
     <Model visible={visible} setVisible={setVisible}>
-      <View style={styles.container}>
-        <View style={styles.header}>
+      <View style={styles.container} >
+        <ScrollView  >
+                  <View style={styles.header}>
           <Pressable
             style={styles.closeButton}
             onPress={() => setVisible(false)}
@@ -30,10 +38,17 @@ const Filter = ({ visible, setVisible }: IFilterProps) => {
           <Text style={styles.headerText}>Filter</Text>
           <View style={styles.placeholder} />
         </View>
-        <TabSwitch title="Type of Cars" tabdata={tabdata} />
+        <TabSwitch
+          title="Type of Cars"
+          tabdata={tabdata}
+          flatlistcontainer={styles.flatlistcontainer}
+          tab={styles.tabcars}
+        />
+        <Line />
         <View
           style={{
-            marginHorizontal: 20,
+            marginHorizontal: 18,
+            marginTop: 15,
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}
@@ -44,35 +59,109 @@ const Filter = ({ visible, setVisible }: IFilterProps) => {
         <View>
           <Slider
             style={{ width: '100%', height: 40 }}
-            minimumValue={0}
-            maximumValue={100}
+            minimumValue={min}
+            maximumValue={max}
             minimumTrackTintColor="#000000"
             maximumTrackTintColor="#000000"
             thumbTintColor="#000000"
             onValueChange={e => setvalue(e)}
             step={1}
             value={value}
-            thumbImage={assests.car1}
           />
-          <View >
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginHorizontal: 20,
+            }}
+          >
             <InputCom
               data={{
                 placeholder: 'Min Value',
-                value: value.toString(),
-                keyboardType: 'default',
-                onChangeText: e => setvalue(parseInt(e)),
+                value: min.toString(),
+                keyboardType: 'numeric',
+                onChangeText: e => {
+                  const val = parseInt(e) || 0;
+                  setmin(val);
+                  if (value < val) setvalue(val); // Ensure value is not less than min
+                },
               }}
             />
-             <InputCom
+            <Image
+              source={assests.logo}
+              style={{ height: 50, width: 50 }}
+              resizeMode="contain"
+            />
+            <InputCom
               data={{
                 placeholder: 'Max Value',
-                value: value.toString(),
-                keyboardType: 'default',
-                onChangeText: e => setvalue(parseInt(e)),
+                value: max.toString(),
+                keyboardType: 'numeric',
+                onChangeText: e => {
+                  const val = parseInt(e) || 0;
+                  setmax(val);
+                  if (value > val) setvalue(val); // Ensure value is not more than max
+                },
               }}
             />
           </View>
+          <Line />
         </View>
+        <TabSwitch
+          title="Rental Time"
+          tabdata={tabtime}
+          flatlistcontainer={styles.flatlisttimecontainer}
+          tab={styles.tabtime}
+        />
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginHorizontal: 20,
+          }}
+        >
+          <Text>Pick up and Drop Date</Text>
+          <Text>05,Jun,2024</Text>
+        </View>
+        <View style={{ marginHorizontal: 18, marginTop: 5 }}>
+          <InputCom
+            data={{
+              placeholder: 'Pickup Location',
+              onChangeText: e => {
+                setLocation(e);
+              },
+              keyboardType: 'default',
+              value: location,
+            }}
+          />
+        </View>
+        <Line />
+        <TabSwitch
+          title="Siting Capacity"
+          tabdata={Capacity}
+          flatlistcontainer={styles.flatlisttimecontainer}
+          tab={styles.tabtime}
+        />
+        <TabSwitch
+          title="Fuel Type"
+          tabdata={FuelType}
+          flatlistcontainer={styles.flatlisttimecontainer}
+          tab={styles.tabtime}
+        />
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 20 , marginVertical : 20 , borderTopWidth : 1 , paddingTop : 20 , borderColor : colors.border , alignItems :'center' }} >
+          <Pressable>
+            <Text>
+              Clear All
+            </Text>
+          </Pressable>
+          <Pressable style={{backgroundColor : 'black' , padding : 13 , borderRadius : 100 }} >
+           <Text style={{color : 'white'}} >
+             Show 100+ Cars
+           </Text>
+          </Pressable>
+        </View>
+        </ScrollView>
       </View>
     </Model>
   );
@@ -85,7 +174,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     fontSize: 18,
     fontWeight: 'bold',
-    marginTop: -12,
+    marginTop: 12,
     // marginHorizontal : 20
   },
   container: {
@@ -131,5 +220,34 @@ const styles = StyleSheet.create({
   tabtext: {
     fontSize: 15,
     letterSpacing: 0.5,
+  },
+  flatlistcontainer: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 100,
+    marginHorizontal: 15,
+  },
+  flatlisttimecontainer: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginHorizontal: 15,
+  },
+  tabtime: {
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 100,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tabcars: {
+    borderRadius: 100,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

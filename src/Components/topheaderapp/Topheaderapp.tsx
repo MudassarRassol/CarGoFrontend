@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 14,
     borderBottomWidth: 1,
+    // filter : 'blur(10px)'
   },
   logoWrapper: {
     flexDirection: 'row',
