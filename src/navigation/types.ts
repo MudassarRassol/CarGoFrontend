@@ -8,5 +8,6 @@ export type RootStackParamList = {
   Home : undefined;
   ConfirmCodeSms : undefined;
   VarifyPhoneNumber : undefined;
-  CarScreen : undefined
+  CarScreen : undefined;
+  Review : undefined;
 };

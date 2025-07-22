@@ -1,21 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { ArrowRight } from 'lucide-react-native';
 
 type Props = {
   title: string;
+  onpress?: () => void;
 };
 
-const UpperCardSection = ({ title }: Props) => {
+const UpperCardSection = ({ title,onpress }: Props) => {
   return (
     <View style={styles.uppertitle}>
       <Text style={[styles.innertext, { fontWeight: 'bold', fontSize: 14 }]}>
         {title}
       </Text>
-      <View style={styles.textcon}>
+      <Pressable style={styles.textcon} onPress={onpress} >
         <Text style={styles.innertext}>View All</Text>
         <ArrowRight size={12} />
-      </View>
+      </Pressable>
     </View>
   );
 };

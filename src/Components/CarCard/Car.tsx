@@ -63,7 +63,6 @@ const Car = ({ bookingbutton,onPress }: Props) => {
         </View>
         }
       </View>
-
       <Pressable style={styles.heartIcon} onPress={() => setFilled(!filled)} >
         {
           filled ? <Icon name="heart" size={12} /> : <Icon3 name="heart" size={12} />
