@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import UpperBar from '../../Components/UpperBar/UpperBar'
 import InputCom from '../../Components/input/Input'
 import Icon from 'react-native-vector-icons/AntDesign';
+import ReviewSec from '../../Components/Review/ReviewSec';
 const Review = () => {
 
     const [search,setsearch] = useState('');
@@ -26,6 +27,7 @@ const Review = () => {
             onChangeText : setsearch
         }}
         />
+        <ReviewSec/>
       </View>
     </View>
   )
