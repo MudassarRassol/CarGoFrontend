@@ -22,6 +22,8 @@ const assests = {
     slide4 : require('./image/s4.jpg'),
     slide5 : require('./image/s5.jpg'),
     varify : require('./image/Varify.png'),
+    visalogo : require('./image/visalogo.png'),
+    Simicons : require('./image/Simicons.png'),
 
 }
 

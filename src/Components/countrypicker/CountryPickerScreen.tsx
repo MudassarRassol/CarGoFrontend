@@ -4,7 +4,11 @@ import Model from './Model';
 import countries from './country';
 import { colors } from '../../theme/color';
 
-const CountryPickerScreen = () => {
+type propes = {
+  color? : string
+}
+
+const CountryPickerScreen = ({color}:propes) => {
   const [country, setCountry] = useState('Paksistan');
   const [isVisible, setIsVisible] = useState(false);
   const [countryimg , setCountryimg] = useState('https://flagcdn.com/w40/pk.png')
@@ -16,7 +20,7 @@ const CountryPickerScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Pressable style={styles.selector} onPress={() => setIsVisible(true)} >
+      <Pressable style={[styles.selector , color && {backgroundColor : colors.white} ]} onPress={() => setIsVisible(true)} >
         <View style={styles.countrybox} >
                     <Image 
         source={{uri : countryimg}}
@@ -67,7 +71,6 @@ const styles = StyleSheet.create({
     // padding: 20,
   },
   selector: {
-
     gap : 10,
     padding: 15,
     borderWidth: 1,
@@ -78,7 +81,8 @@ const styles = StyleSheet.create({
   countrybox:{
     flexDirection: 'row', 
     alignItems : 'center',
-    gap : 10
+    gap : 10,
+
   },
   selectedText: {
     fontSize: 16,

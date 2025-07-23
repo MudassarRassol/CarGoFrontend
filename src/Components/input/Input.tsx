@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput, StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { InputField } from './type';
+import { colors } from '../../theme/color';
 
 type Props = {
   data: InputField;
@@ -13,7 +14,7 @@ const InputCom = ({ data }: Props) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.input} >
+      <View  style={[styles.input]} >
              { data.Icon && data.Icon}
       <TextInput
         placeholder={data.placeholder}
@@ -22,6 +23,8 @@ const InputCom = ({ data }: Props) => {
         value={data.value}
         placeholderTextColor="#aaa"
         secureTextEntry={isPasswordField ? !showPassword : false}
+        style={{width : '100%'}}
+        
       />
       {isPasswordField && (
         <TouchableOpacity
@@ -33,6 +36,17 @@ const InputCom = ({ data }: Props) => {
           </Text>
         </TouchableOpacity>
       )}
+      {
+        data.default && 
+        <TouchableOpacity
+          style={styles.showDefualtButton}
+          onPress={data.onpress}
+        >
+          <Text style={{ color: '#020202ff', fontSize: 10 , padding : 10 }}>
+            DAFULT
+          </Text>
+        </TouchableOpacity>
+      }
       </View>
     </View>
   );
@@ -63,5 +77,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 15,
     top: 20,
+  },
+  showDefualtButton: {
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    backgroundColor : '#EDEDED',
+    borderWidth: 1,
+    borderColor : colors.border,
+     borderRadius : 10
   },
 });

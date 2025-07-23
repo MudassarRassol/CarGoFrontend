@@ -1,4 +1,4 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import Icon3 from 'react-native-vector-icons/EvilIcons';
@@ -6,7 +6,8 @@ import React from 'react';
 import assests from '../../assets';
 import { Heart, LocationEdit } from 'lucide-react-native';
 import { colors } from '../../theme/color';
-
+const widthscreen  = Dimensions.get('screen').width;
+const cardwidth = widthscreen*0.45
 type Props = {
   bookingbutton?: boolean;
   onPress? : ()=>void;
@@ -77,7 +78,7 @@ export default Car;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    width: 179.2,
+    width: cardwidth,
     padding: 10,
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },

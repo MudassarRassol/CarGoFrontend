@@ -143,7 +143,7 @@ const CarScreen = () => {
             )}
             horizontal
             showsHorizontalScrollIndicator ={false}
-            contentContainerStyle={{marginHorizontal  : 10}}
+            contentContainerStyle={{marginHorizontal  : 10 , paddingEnd : 20}}
             />
           </ScrollView>
           <Button text={'Book Now'} onpress={() =>navigate.navigate('Booking') } />
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   },
   userRow: {
     marginHorizontal: 20,
-    marginTop: 10,
+    marginTop: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -207,21 +207,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   profileImage: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     borderRadius: 100,
   },
   userNameRow: {
     flexDirection: 'row',
-    gap: 2,
+    alignItems : 'center',
+    gap: 5,
   },
   userName: {
     fontSize: 15,
     fontWeight: 'bold',
+    letterSpacing : 1
   },
   varifyIcon: {
-    width: 20,
-    height: 20,
+    width: 15,
+    height: 15,
+    marginBottom: -2,
   },
   contactButtons: {
     flexDirection: 'row',
@@ -240,15 +243,16 @@ const styles = StyleSheet.create({
   sectionTitle: {
     marginHorizontal: 20,
     marginTop: 20,
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
+    letterSpacing : 1
   },
   featureList: {
-    paddingHorizontal: 20,
+    marginHorizontal : 20,
     marginTop: 10,
   },
   featureRow: {
     justifyContent: 'space-between',
-    marginBottom: 10,
+    marginBottom: 5,    
   }
 });

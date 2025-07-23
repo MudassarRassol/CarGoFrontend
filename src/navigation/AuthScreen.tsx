@@ -4,7 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabs from './bottomtab/BottomTab';
 import CarScreen from '../screens/Car/Car';
 import Review from '../screens/Review/Review';
-import Booking from '../screens/Booking/Booking';
+import Booking from '../screens/Booking/Details/Booking';
+import Payment from '../screens/Booking/Payment/Payment';
+
 const Stack = createStackNavigator();
 
 const AuthScreen = () => {
@@ -14,6 +16,7 @@ const AuthScreen = () => {
       <Stack.Screen  name="CarScreen" component={CarScreen} />
       <Stack.Screen  name="Review" component={Review} />
       <Stack.Screen  name="Booking" component={Booking} />
+      <Stack.Screen  name="Payment" component={Payment} />
     </Stack.Navigator>
   );
 };

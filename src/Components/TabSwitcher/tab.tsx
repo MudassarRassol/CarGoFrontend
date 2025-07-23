@@ -44,11 +44,26 @@ const TabSwitch = ({
                 <View
                   style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}
                 >
-                  {
-                    item.Icon &&                   <View style={isSelected ? { backgroundColor: 'white', width : 40 , height :40  , borderRadius : 100 , justifyContent : 'center' , alignItems : 'center' } : {}} >
-                    {item.Icon}
-                  </View>
-                  }
+                  {item.Icon && (
+                    <View
+                      style={
+                        isSelected
+                          ? {
+                              backgroundColor: 'white',
+                              // width: 40,
+                              // height: 40,
+                              paddingHorizontal : 10,
+                              paddingVertical : 5,
+                              borderRadius: 100,
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }
+                          : {}
+                      }
+                    >
+                      {item.Icon}
+                    </View>
+                  )}
                   <Text
                     style={isSelected ? styles.selectedtabtext : styles.tabtext}
                   >
@@ -69,7 +84,7 @@ export default TabSwitch;
 const styles = StyleSheet.create({
   title: {
     letterSpacing: 1,
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: 'bold',
     marginHorizontal: 15,
     marginTop: 10,

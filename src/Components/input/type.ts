@@ -1,4 +1,5 @@
 import React from "react";
+import { ViewStyle } from "react-native";
 
 export type InputField = {
   placeholder: string;
@@ -7,5 +8,8 @@ export type InputField = {
   value : string,
   secureTextEntry?: boolean; 
   limit? : number,
-  Icon?  : React.ReactNode
+  Icon?  : React.ReactNode,
+  default? : boolean,
+  onpress? : (e:any) => void,
+  style? : ViewStyle
 };

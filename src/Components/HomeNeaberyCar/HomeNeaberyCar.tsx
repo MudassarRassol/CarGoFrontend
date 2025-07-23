@@ -45,6 +45,7 @@ const HomeNeaberyCar = () => {
         contentContainerStyle={{ padding : 5 , marginBottom : 70 }}
         renderItem={() => <Car />}
         showsVerticalScrollIndicator={false}
+        scrollEnabled={false}
       />
     </View>
   );

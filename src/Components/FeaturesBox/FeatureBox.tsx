@@ -25,11 +25,11 @@ export default FeatureBox;
 const styles = StyleSheet.create({
   box: {
     backgroundColor: '#EDEDED',
-    width: 120,
-    height: 120,
+    width: '34%',
     borderRadius: 20,
     padding: 12,
     gap: 10,
+    transform: [{ scale: 0.95 }],
   },
   iconContainer: {
     width: 40,

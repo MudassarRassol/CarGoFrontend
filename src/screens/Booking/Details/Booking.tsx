@@ -1,23 +1,31 @@
 import { ScrollView, StyleSheet, Text, View, Pressable } from 'react-native';
 import React, { use } from 'react';
-import UpperBar from '../../Components/UpperBar/UpperBar';
-import Stepper from '../../Components/Stepper/Stepper';
+import UpperBar from '../../../Components/UpperBar/UpperBar';
+import Stepper from '../../../Components/Stepper/Stepper';
 import { Switch } from 'react-native-gesture-handler';
-import { colors } from '../../theme/color';
+import { colors } from '../../../theme/color';
 import { useState } from 'react';
-import InputCom from '../../Components/input/Input';
+import InputCom from '../../../Components/input/Input';
 import Icon from 'react-native-vector-icons/Ionicons';
-import AntDesign2 from 'react-native-vector-icons/AntDesign';
 import AntDesign from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import TabSwitch from '../../Components/TabSwitcher/tab';
-import { tabtime } from '../View/Filterdata';
-import UpperCardSection from '../../Components/UpperCardSection.tsx/UpperCardSection';
-import DatePicker from '../../Components/DatePicker/DatePicker';
-import ButtonCom from '../../Components/button/Component';
-import Button from '../../Components/ButtonCom/Button';
+import TabSwitch from '../../../Components/TabSwitcher/tab';
+import { tabtime } from '../../View/Filterdata';
+import DatePicker from '../../../Components/DatePicker/DatePicker';
+import Button from '../../../Components/ButtonCom/Button';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../../navigation/types';
+import { useNavigation } from '@react-navigation/native';
+
+type navigation = StackNavigationProp<RootStackParamList,'Payment'>
+
+
 const Booking = () => {
+  const navigate = useNavigation<navigation>()
   const [switchs, setswitchs] = useState(false);
+  const [name, setname] = useState('');
+  const [email, setemail] = useState('');
+  const [phone, setphone] = useState('');
   const data = [
     {
       id: 1,
@@ -38,12 +46,12 @@ const Booking = () => {
       Icon: <Icon name="male-female-outline" size={20} color="black" />,
     },
   ];
-    const [datepicker, setdatepicker] = useState(false);
-  
+  const [datepicker, setdatepicker] = useState(false);
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false}  >
+    <ScrollView showsVerticalScrollIndicator={false}>
       <UpperBar title="Booking Details" hasback={true} />
-      <Stepper active={2} />
+      <Stepper active={0} />
       <Pressable
         style={({ pressed }) => [
           styles.driverBox,
@@ -70,8 +78,10 @@ const Booking = () => {
         <InputCom
           data={{
             placeholder: 'Full Name',
-            value: '',
-            onChangeText: () => {},
+            value: name,
+            onChangeText: e => {
+              setname(e);
+            },
             keyboardType: 'default',
             Icon: <Icon name="person" size={23} color="black" />,
           }}
@@ -79,8 +89,10 @@ const Booking = () => {
         <InputCom
           data={{
             placeholder: 'Email Adress',
-            value: '',
-            onChangeText: () => {},
+            value: email,
+            onChangeText: e => {
+              setemail(e);
+            },
             keyboardType: 'email-address',
             Icon: <Icon name="mail" size={23} color="black" />,
           }}
@@ -88,8 +100,10 @@ const Booking = () => {
         <InputCom
           data={{
             placeholder: 'Phone Number',
-            value: '',
-            onChangeText: () => {},
+            value: phone,
+            onChangeText: e => {
+              setphone(e);
+            },
             keyboardType: 'numeric',
             Icon: <AntDesign name="phone" size={23} color="black" />,
           }}
@@ -109,7 +123,7 @@ const Booking = () => {
       />
       <View
         style={{
-          marginHorizontal: 20,
+          marginHorizontal: 10,
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -121,7 +135,12 @@ const Booking = () => {
           paddingVertical: 10,
         }}
       >
-        <Pressable onPress={() => {setdatepicker(true)}} style={{ gap: 4 }}>
+        <Pressable
+          onPress={() => {
+            setdatepicker(true);
+          }}
+          style={{ gap: 4 }}
+        >
           <Text>Pick up Date</Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
             <Icon name="timer-outline" />
@@ -136,7 +155,12 @@ const Booking = () => {
             borderWidth: 0.8,
           }}
         />
-        <Pressable onPress={() => {setdatepicker(true)}} style={{ gap: 4 }}>
+        <Pressable
+          onPress={() => {
+            setdatepicker(true);
+          }}
+          style={{ gap: 4 }}
+        >
           <Text>Return Date</Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
             <Icon name="timer-outline" />
@@ -156,9 +180,9 @@ const Booking = () => {
           }}
         />
       </View>
-      <Button text=" $1400 Pay Now" />
-      <View  >
-          <DatePicker isVisible={datepicker} setIsVisible={setdatepicker} />
+      <Button onpress={() => navigate.navigate('Payment') } text=" $1400 Pay Now" />
+      <View>
+        <DatePicker isVisible={datepicker} setIsVisible={setdatepicker} />
       </View>
     </ScrollView>
   );
@@ -186,8 +210,9 @@ const styles = StyleSheet.create({
   },
   driverTitle: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 15,
     marginBottom: 4,
+    letterSpacing: 1,
   },
   driverSubtitle: {
     fontSize: 14,
@@ -197,12 +222,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginHorizontal: 20,
+    marginHorizontal: 10,
   },
   tab: {
     //  backgroundColor: 'black',
+    marginHorizontal: 2,
     borderRadius: 100,
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -210,7 +236,7 @@ const styles = StyleSheet.create({
   },
   title: {
     letterSpacing: 1,
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: 'bold',
     // marginHorizontal: 15,
     marginTop: 10,

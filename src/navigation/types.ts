@@ -11,4 +11,5 @@ export type RootStackParamList = {
   CarScreen : undefined;
   Review : undefined;
   Booking : undefined;
+  Payment : undefined;
 };

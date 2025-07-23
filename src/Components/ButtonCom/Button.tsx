@@ -10,7 +10,7 @@ const Button = ({text,onpress}:propes) => {
   return (
 
       <Pressable onPress={onpress} style={styles.bookNowButton}>
-        <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>
+        <Text style={{ color: 'white', fontSize: 15 , letterSpacing: 1, fontWeight: 'bold' }}>
           {
             text
           }
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     marginHorizontal: 20,
     // marginTop: 10,
-    padding: 20,
+    padding: 15,
     alignItems: 'center',
     borderRadius : 100,
     marginBottom  : 10
