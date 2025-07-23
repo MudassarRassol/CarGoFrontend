@@ -13,8 +13,9 @@ const InputCom = ({ data }: Props) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.input} >
+             { data.Icon && data.Icon}
       <TextInput
-        style={styles.input}
         placeholder={data.placeholder}
         keyboardType={data.keyboardType}
         onChangeText={data.onChangeText}
@@ -32,6 +33,7 @@ const InputCom = ({ data }: Props) => {
           </Text>
         </TouchableOpacity>
       )}
+      </View>
     </View>
   );
 };
@@ -47,14 +49,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 8,
-    padding: 12,
+    paddingHorizontal: 15,
+    paddingVertical : 10,
     fontSize: 16,
     color: '#000',
     paddingRight: 60, // space for show/hide button
+    backgroundColor : 'white',
+    flexDirection : 'row' , 
+    alignItems : 'center' , 
+    gap : 9
   },
   showHideButton: {
     position: 'absolute',
     right: 15,
-    top: 14,
+    top: 20,
   },
 });

@@ -25,6 +25,7 @@ import Review from '../../Components/Review/Review';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/types';
 import { useNavigation } from '@react-navigation/native';
+import Button from '../../Components/ButtonCom/Button';
 
 
  type navigation = StackNavigationProp<RootStackParamList, 'Review'>
@@ -145,13 +146,7 @@ const CarScreen = () => {
             contentContainerStyle={{marginHorizontal  : 10}}
             />
           </ScrollView>
-          <View  >
-                      <Pressable style={styles.bookNowButton}>
-            <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>
-              Book Now
-            </Text>
-          </Pressable>
-          </View>
+          <Button text={'Book Now'} onpress={() =>navigate.navigate('Booking') } />
         </View>
       </View>
     </View>
@@ -255,15 +250,5 @@ const styles = StyleSheet.create({
   featureRow: {
     justifyContent: 'space-between',
     marginBottom: 10,
-  },
-  bookNowButton: {
-    backgroundColor: 'black',
-    marginHorizontal: 20,
-    // marginTop: 10,
-    padding: 20,
-    alignItems: 'center',
-    borderRadius : 100,
-    marginBottom  : 10
-
-  },
+  }
 });

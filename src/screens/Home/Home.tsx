@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}   contentContainerStyle={{ flexGrow: 1 }}>
       <Topheaderapp  />
-      <SearchFilter />
+      <SearchFilter  />
       <Brands  horizontal={false} />
       <HomePagesCarShowCase/>
     </ScrollView>

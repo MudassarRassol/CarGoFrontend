@@ -1,3 +1,4 @@
+import React from "react"
 import { ViewStyle } from "react-native"
 
 export interface TabProps {
@@ -5,7 +6,8 @@ export interface TabProps {
     title : string,
     onpress? : (e:Itab) => void,
     flatlistcontainer? : ViewStyle,
-    tab? : ViewStyle
+    tab? : ViewStyle,
+    Icon? : React.ReactNode
 
 }
 
@@ -13,5 +15,6 @@ export interface TabProps {
 export interface Itab{
     id : number,
     label : string,
-    value : string
+    value : string,
+    Icon? : React.ReactNode
 }

@@ -10,4 +10,5 @@ export type RootStackParamList = {
   VarifyPhoneNumber : undefined;
   CarScreen : undefined;
   Review : undefined;
+  Booking : undefined;
 };

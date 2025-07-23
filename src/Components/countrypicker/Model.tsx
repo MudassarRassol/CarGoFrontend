@@ -5,8 +5,8 @@ const Model = ({ visible, setVisible, children }: IBottomSheetProps) => {
   return (
     <Modal
       presentationStyle="overFullScreen"
-      animationType='slide'
-      transparent={false}
+      animationType='fade'
+      transparent={true}
       visible={visible}
       onRequestClose={() => setVisible(false)}
     >
@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     right: 0,
     position: 'absolute',
     justifyContent: 'flex-end',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
   },
 });

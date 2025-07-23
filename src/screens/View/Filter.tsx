@@ -17,12 +17,13 @@ import assests from '../../assets';
 import InputCom from '../../Components/input/Input';
 import Line from './../../Components/line/Line';
 import { Capacity, FuelType, tabdata, tabtime } from './Filterdata';
+import DatePicker from '../../Components/DatePicker/DatePicker';
 const Filter = ({ visible, setVisible }: IFilterProps) => {
   const [location, setLocation] = useState<string>('');
-
   const [min, setmin] = useState(0);
   const [max, setmax] = useState(5000);
   const [value, setvalue] = useState(0);
+  const [datepicker, setdatepicker] = useState(false);
 
   return (
     <Model visible={visible} setVisible={setVisible}>
@@ -122,7 +123,11 @@ const Filter = ({ visible, setVisible }: IFilterProps) => {
           }}
         >
           <Text>Pick up and Drop Date</Text>
-          <Text>05,Jun,2024</Text>
+          
+          <Pressable onPress={() => {setdatepicker(true)}} >
+            <DatePicker isVisible={datepicker} setIsVisible={setdatepicker} />
+            <Text>05,Jun,2024</Text>
+          </Pressable>
         </View>
         <View style={{ marginHorizontal: 18, marginTop: 5 }}>
           <InputCom

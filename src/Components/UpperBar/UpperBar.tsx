@@ -21,6 +21,7 @@ const UpperBar = ({ hasback, title }: UpperBarProps) => {
             borderBottomColor: colors.border,
             paddingVertical: 20,
             paddingHorizontal: 20,
+            backgroundColor: '#EDEDED',
           }}
         >
           <Pressable
