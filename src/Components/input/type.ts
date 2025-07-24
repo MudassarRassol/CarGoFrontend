@@ -11,5 +11,6 @@ export type InputField = {
   Icon?  : React.ReactNode,
   default? : boolean,
   onpress? : (e:any) => void,
-  style? : ViewStyle
+  style? : ViewStyle,
+  width? : string
 };

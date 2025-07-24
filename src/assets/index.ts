@@ -24,6 +24,8 @@ const assests = {
     varify : require('./image/Varify.png'),
     visalogo : require('./image/visalogo.png'),
     Simicons : require('./image/Simicons.png'),
+    Master : require('./image/Master.png'),
+    Varifed : require('./image/Varifed.png'),
 
 }
 

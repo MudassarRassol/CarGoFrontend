@@ -26,6 +26,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import Button from '../../Components/ButtonCom/Button';
+import CarDetails from '../../Components/CarDeatilsHeader/CarDetails';
 
 
  type navigation = StackNavigationProp<RootStackParamList, 'Review'>
@@ -84,19 +85,13 @@ const CarScreen = () => {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 20 }}
           >
-            <View style={styles.detailsHeader}>
-              <View style={styles.spaceBetween}>
-                <Text style={styles.carTitle}>Tesla Model S</Text>
-                <View style={styles.rowCenter}>
-                  <Text style={styles.ratingText}>5.0</Text>
-                  <Icon name="star" size={13} color={'orange'} />
-                  <Text style={styles.reviewText}>(100+ Reviews)</Text>
-                </View>
-              </View>
-              <Text style={styles.descText}>
-                A car with high specs that are rented at an affordable price.
-              </Text>
-            </View>
+  
+            <CarDetails
+            model='Tesla Model S'
+            rating={5}
+            review={100}
+            desc='A car with high specs that are rented at an affordable price.'
+            />
 
             <Line />
 

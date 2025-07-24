@@ -12,4 +12,9 @@ export type RootStackParamList = {
   Review : undefined;
   Booking : undefined;
   Payment : undefined;
+  Confirmation : undefined;
+  Status : undefined;
+  MainTabs : undefined;
+  Profile : undefined;
+  EditProfile : undefined
 };

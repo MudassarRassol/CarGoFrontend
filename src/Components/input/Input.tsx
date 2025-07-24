@@ -13,7 +13,7 @@ const InputCom = ({ data }: Props) => {
   const isPasswordField = data.secureTextEntry;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container , {width : data.width ? '40%' : '100%'}]}>
       <View  style={[styles.input]} >
              { data.Icon && data.Icon}
       <TextInput
@@ -23,7 +23,7 @@ const InputCom = ({ data }: Props) => {
         value={data.value}
         placeholderTextColor="#aaa"
         secureTextEntry={isPasswordField ? !showPassword : false}
-        style={{width : '100%'}}
+        style={{width:'100%'}}
         
       />
       {isPasswordField && (

@@ -8,19 +8,24 @@ import { ScrollView, Text } from 'react-native-gesture-handler';
 import InputCom from '../../../Components/input/Input';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CardPicker from '../../../Components/CardPicker.tsx/CardPicker';
-import { ArrowDown, Scroll } from 'lucide-react-native';
 import CountryPickerScreen from '../../../Components/countrypicker/CountryPickerScreen';
 import CheckBox from '@react-native-community/checkbox';
 import { colors } from '../../../theme/color';
 import ButtonCom from '../../../Components/button/Component';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
-import Button from '../../../Components/ButtonCom/Button';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../../navigation/types';
+import { useNavigation } from '@react-navigation/native';
+
+type navigation = StackNavigationProp<RootStackParamList, 'Confirmation'>;
+
 const Payment = () => {
+    const navigate = useNavigation<navigation>();
   const [isVisible, setIsVisible] = useState(false);
   const [isSelected, setSelection] = useState(false);
 
   return (
-    <ScrollView>
+    <ScrollView  >
       <UpperBar title="Payment methods" hasback={true} />
       <Stepper active={1} />
       <VisaCards />
@@ -144,6 +149,7 @@ const Payment = () => {
           <ButtonCom
             text="Continue"
             buttonstyle={styles.buttonstyle4}
+            onPress={() => navigate.navigate('Confirmation')}
             // textstyle={styles.txt1}
             // icon={<Icon2 name="apple" size={20} />}
           />

@@ -43,9 +43,11 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 12,
+    letterSpacing : 1
   },
   value: {
-    fontSize: 15,
+    fontSize: 12,
+    letterSpacing : 1,
     fontWeight: 'bold',
   },
 });

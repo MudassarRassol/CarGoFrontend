@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../../screens/Home/Home';
-import Profile from '../../screens/Profile/Profile'
+import Profile from '../../screens/Profile/ProfileScreen/Profile'
 import Icon from 'react-native-vector-icons/Feather';
 
 import { colors } from '../../theme/color';

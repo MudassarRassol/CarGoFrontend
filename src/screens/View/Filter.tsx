@@ -82,6 +82,7 @@ const Filter = ({ visible, setVisible }: IFilterProps) => {
                 placeholder: 'Min Value',
                 value: min.toString(),
                 keyboardType: 'numeric',
+                width : "40%",
                 onChangeText: e => {
                   const val = parseInt(e) || 0;
                   setmin(val);
@@ -98,6 +99,7 @@ const Filter = ({ visible, setVisible }: IFilterProps) => {
               data={{
                 placeholder: 'Max Value',
                 value: max.toString(),
+                width : "40%",
                 keyboardType: 'numeric',
                 onChangeText: e => {
                   const val = parseInt(e) || 0;
