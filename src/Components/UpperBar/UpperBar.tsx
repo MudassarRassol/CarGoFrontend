@@ -7,8 +7,9 @@ import Icon from 'react-native-vector-icons/Entypo';
 import { colors } from '../../theme/color';
 import Topheaderapp from '../topheaderapp/Topheaderapp';
 import { useNavigation } from '@react-navigation/native';
-const UpperBar = ({ hasback, title }: UpperBarProps) => {
-  const navigation = useNavigation()
+import { Image } from 'react-native-svg';
+const UpperBar = ({ hasback, title, actioncom }: UpperBarProps) => {
+  const navigation = useNavigation();
   return (
     <View>
       {hasback ? (
@@ -24,20 +25,24 @@ const UpperBar = ({ hasback, title }: UpperBarProps) => {
             backgroundColor: '#EDEDED',
           }}
         >
-          <Pressable
-          onPress={()=>navigation.goBack()}
-            style={{
-              borderWidth: 1,
-              width: 40,
-              height: 40,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: 100,
-            }}
-          >
-            <ArrowLeft size={24} color={'black'} />
-          </Pressable>
-          <Text style={{ fontSize: 20 }}>{title}</Text>
+          <View style={{flexDirection : 'row',gap : 10 , alignItems : 'center'}} >
+            <Pressable
+              onPress={() => navigation.goBack()}
+              style={{
+                borderWidth: 1,
+                width: 40,
+                height: 40,
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 100,
+              }}
+            >
+              <ArrowLeft size={24} color={'black'} />
+            </Pressable>
+            {actioncom && }
+          </View>
+
+          <Text style={{ fontSize: 20  }}>{title}</Text>
           <Pressable
             style={{
               borderWidth: 1,
