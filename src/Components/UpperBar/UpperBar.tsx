@@ -39,7 +39,7 @@ const UpperBar = ({ hasback, title, actioncom }: UpperBarProps) => {
             >
               <ArrowLeft size={24} color={'black'} />
             </Pressable>
-            {actioncom && }
+            {actioncom && actioncom}
           </View>
 
           <Text style={{ fontSize: 20  }}>{title}</Text>
