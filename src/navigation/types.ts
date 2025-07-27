@@ -16,5 +16,8 @@ export type RootStackParamList = {
   Status : undefined;
   MainTabs : undefined;
   Profile : undefined;
-  EditProfile : undefined
+  EditProfile : undefined;
+  ChatScreen : undefined;
+  Partner : undefined;
+  PatnerForm : undefined;
 };

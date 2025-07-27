@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { ArrowRight, Heart, Icon } from 'lucide-react-native';
 import { colors } from '../../theme/color';
@@ -11,13 +11,14 @@ type props = {
 
 const General = ({text , icon,onpress}:props) => {
   return (
-    <View
+    <Pressable
       style={{
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         marginVertical : 10
       }}
+      onPress={onpress}
     >
       <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
         <View style={{ width: 40, height: 40, borderWidth : 1 , borderColor:colors.border, borderRadius : 100 , alignItems : 'center' , justifyContent : 'center' }}>
@@ -28,7 +29,7 @@ const General = ({text , icon,onpress}:props) => {
         </Text>
       </View>
       <ArrowRight size={19} color={'#767676'} />
-    </View>
+    </Pressable>
   );
 };
 

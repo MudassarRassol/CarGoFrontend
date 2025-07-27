@@ -26,7 +26,9 @@ const assests = {
     Simicons : require('./image/Simicons.png'),
     Master : require('./image/Master.png'),
     Varifed : require('./image/Varifed.png'),
-
+    nonotification : require('./image/nonotification.png'),
+    patner : require('./image/patner.png'),
+    
 }
 
 export default assests;

@@ -8,7 +8,7 @@ import { colors } from '../../theme/color';
 import { Bell, BellDotIcon, MessageCircle, SearchIcon, UserRoundIcon, View } from 'lucide-react-native';
 import Search from '../../screens/Search/Search';
 import Notifications from '../../screens/Notifications/Notifications';
-import Message from '../../screens/Message/Message';
+import Message from '../../screens/Message/MessageScreen/Message';
 import { useRoute } from '@react-navigation/native';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';

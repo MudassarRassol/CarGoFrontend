@@ -1,5 +1,6 @@
 export interface ISearchFilter {
     onFilterPress?: () => void;
+    filter? : boolean
 }
 
 export interface IFilterProps {

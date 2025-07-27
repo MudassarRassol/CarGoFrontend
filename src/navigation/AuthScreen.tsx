@@ -11,6 +11,10 @@ import Status from '../screens/Booking/PaymentStatus/Status';
 import Home from '../screens/Home/Home';
 import Profile from '../screens/Profile/ProfileScreen/Profile';
 import EditProfile from '../screens/Profile/Update/Profile';
+import ChatScreen from '../screens/Message/ChatScreen/ChatScreen';
+import Partner from '../screens/Partner/CarGoPartner/Partner';
+import PatnerForm from '../screens/Partner/PartnerForm/PatnerForm';
+
 const Stack = createStackNavigator();
 
 const AuthScreen = () => {
@@ -26,6 +30,9 @@ const AuthScreen = () => {
       <Stack.Screen  name="Home" component={Home} />
       <Stack.Screen  name="Profile" component={Profile} />
       <Stack.Screen  name="EditProfile" component={EditProfile} />
+      <Stack.Screen  name="ChatScreen" component={ChatScreen} />
+      <Stack.Screen  name="Partner" component={Partner} />
+      <Stack.Screen  name="PatnerForm" component={PatnerForm} />
     </Stack.Navigator>
   );
 };

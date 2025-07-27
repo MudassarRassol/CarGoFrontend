@@ -9,7 +9,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../navigation/types';
 import { useNavigation } from '@react-navigation/native';
 
-type navigation = StackNavigationProp<RootStackParamList,'EditProfile'>
+type navigation = StackNavigationProp<RootStackParamList,'EditProfile','Partner'>
 
 const Profile = () => {
 
@@ -79,8 +79,9 @@ const Profile = () => {
             <General 
            text='Notification'
            icon={<BellDotIcon size={19} color={'#767676'} />}
-           />
-            <General 
+           /> 
+          <General 
+           onpress={() => {navigation.navigate('Partner')}}
            text='Connected to QENT Partnerships'
            icon={<Car size={19} color={'#767676'} />}
            />
