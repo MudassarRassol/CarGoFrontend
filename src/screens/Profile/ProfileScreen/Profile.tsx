@@ -8,12 +8,26 @@ import General from '../../../Components/ProfileGeneral/General';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../navigation/types';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../utils/redux/authSlice';
+
 
 type navigation = StackNavigationProp<RootStackParamList,'EditProfile','Partner'>
+type navigationtwo = StackNavigationProp<RootStackParamList,'ScreenTwo'>
 
 const Profile = () => {
-
+  const dispatch = useDispatch()
   const navigation = useNavigation<navigation>()
+  const navigationtwo = useNavigation<navigationtwo>()
+
+  const logOut=async()=>{
+     await AsyncStorage.removeItem('userlogin');
+     await AsyncStorage.removeItem('token');
+     dispatch(logout())
+     navigationtwo.navigate('ScreenTwo')
+    console.log('User Logout')
+  }
 
   return (
     <View>
@@ -113,6 +127,7 @@ const Profile = () => {
            icon={<Car size={19} color={'#767676'} />}
            />
             <General 
+            onpress={() => logOut()}
            text='Log out'
            icon={<LogOut size={19} color={'#767676'} />}
            />

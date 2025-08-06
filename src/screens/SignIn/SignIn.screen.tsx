@@ -11,8 +11,12 @@ import { RootStackParamList } from '../../navigation/types';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import { colors } from '../../theme/color';
+import API from '../api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../../utils/redux/authSlice';
 
-type NavigationProp = StackNavigationProp<RootStackParamList>;
+type NavigationProp = StackNavigationProp<RootStackParamList,"Home">;
 
 
 const SignIn = () => {
@@ -20,6 +24,27 @@ const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSelected, setSelection] = useState(false);
+  const [loading,setloading] = useState(false)
+const dispatch = useDispatch();
+    const login=async()=>{
+    setloading(true)
+    try {
+      const res = await API.post('/api/auth/login',{
+        email,password
+      })
+      if(res.status === 201){
+        await AsyncStorage.setItem('userlogin', 'true');
+        await AsyncStorage.setItem('token', res.data.token);
+        dispatch(loginSuccess())
+        navigation.navigate('Home')
+        setloading(false)
+      }
+    } catch (error) {
+      setloading(false)
+     console.log('❌ Axios Error:', error);
+    }
+
+  }
 
   return (
     <ScrollView showsVerticalScrollIndicator = {false} >
@@ -61,7 +86,7 @@ const SignIn = () => {
         <Text style={{letterSpacing : 1 , fontSize : 12}  } onPress={()=> navigation.navigate('Reset')} >Forget Password?</Text>
       </View>
       <View  style={styles.buttoncon} >
-      <ButtonCom  text='Login' buttonstyle={styles.buttonstyle}  />
+      <ButtonCom  text={loading ? 'loading...' : 'login'} buttonstyle={styles.buttonstyle} onPress={()=>login()} />
       <ButtonCom  text='Sign up' buttonstyle={styles.buttonstyle2} textstyle={styles.txt} onPress={()=> navigation.navigate('SignUp')} />
       </View>
       <View style={styles.or} >
@@ -72,7 +97,7 @@ const SignIn = () => {
         <View style={styles.line} />
       </View>
       <View style={{ marginHorizontal: 20 , margin : 'auto' , width : '100%' }}>
-        <ButtonCom  text='Sign in with Google' buttonstyle={styles.buttonstyle3} textstyle={styles.txt} onPress={()=> navigation.navigate('ScreenOne')}  icon={<Icon2 name="google" size={20} />}  />
+        <ButtonCom  text='Sign in with Google' buttonstyle={styles.buttonstyle3} textstyle={styles.txt} onPress={()=> navigation.navigate('Onboarding')}  icon={<Icon2 name="google" size={20} />}  />
         <ButtonCom  text='Sign in with Apple' buttonstyle={styles.buttonstyle3} textstyle={styles.txt} icon={<Icon2 name="apple" size={20} />} />
       </View>
       <Text style={{ marginHorizontal: 20, textAlign : 'center' , marginTop : 20 }} onPress={()=> navigation.navigate('SignUp')} >

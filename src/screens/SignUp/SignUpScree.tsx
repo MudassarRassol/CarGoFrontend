@@ -1,5 +1,5 @@
 import { Button, SafeAreaView, StyleSheet, Text, View,ScrollView } from 'react-native';
-import React from 'react';
+import React, { use } from 'react';
 import Header from '../../Components/Header/Header';
 import InputCom from '../../Components/input/Input';
 import { useState } from 'react';
@@ -10,13 +10,37 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import { colors } from '../../theme/color';
-type SignUpScreenNavigationProp = StackNavigationProp<RootStackParamList, 'SignUp'>;
+import API from '../api';
+import { useDispatch } from 'react-redux';
+import CountryPickerScreen from '../../Components/countrypicker/CountryPickerScreen';
+type SignUpScreenNavigationProp = StackNavigationProp<RootStackParamList, 'SignUp','ConfirmCode'>;
 const SignUp = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigation<SignUpScreenNavigationProp>();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [fullname,setfullname] = useState('');
+  const [fullName,setfullname] = useState('');
   const [country,setcountry] = useState('');
+  const [phone,setphone] = useState('');
+  const [loading,setloading] = useState(false)
+  const createaccount=async()=>{
+    setloading(true)
+    try {
+      const res = await API.post('/api/auth/signup',{
+        email,password,fullName,phone,country
+      })
+      if(res.status === 201){
+        navigation.navigate('ConfirmCode')
+        setloading(false)
+        navigation.navigate('SignIn')
+      }
+    } catch (error) {
+      setloading(false)
+     console.log('❌ Axios Error:', JSON.stringify(error, null, 2));
+    }
+
+  }
+
   return (
     <ScrollView 
     showsVerticalScrollIndicator = {false}
@@ -29,7 +53,7 @@ const SignUp = () => {
         <InputCom
           data={{
             placeholder: 'Full Name',
-            value: fullname,
+            value: fullName,
             onChangeText: setfullname,
             keyboardType: 'email-address',
           }}
@@ -51,17 +75,19 @@ const SignUp = () => {
             secureTextEntry: true, 
           }} 
         />
-                <InputCom
+         <InputCom
           data={{
-            placeholder: 'Country',
-            value: country,
-            onChangeText: setcountry,
-            keyboardType: 'default',
-          }}
+            placeholder: 'phone',
+            value: phone,
+            onChangeText: setphone,
+            keyboardType: 'phone-pad', 
+            // secureTextEntry: true, 
+          }} 
         />
+        <CountryPickerScreen onSelectCountry={(value) => setcountry(value)} />
       </View>
       <View  style={styles.buttoncon} >
-      <ButtonCom  text='Sign up' buttonstyle={styles.buttonstyle2} textstyle={styles.txt}  />
+      <ButtonCom  text={loading ? 'Loading...' : 'Sign Up'} buttonstyle={styles.buttonstyle2} textstyle={styles.txt} onPress={()=>createaccount()}  />
       <ButtonCom  text='Login' buttonstyle={styles.buttonstyle} onPress={()=> navigation.navigate('SignIn')}  />
       </View>
       <View style={styles.or} >
@@ -72,7 +98,7 @@ const SignUp = () => {
         <View style={styles.line} />
       </View>
       <View style={{ marginHorizontal: 20 , margin : 'auto' , width : '100%' }}>
-        <ButtonCom  text='Sign Up with Google' buttonstyle={styles.buttonstyle3} textstyle={styles.txt} onPress={()=> navigation.navigate('ScreenOne')} 
+        <ButtonCom  text='Sign Up with Google' buttonstyle={styles.buttonstyle3} textstyle={styles.txt} 
            icon={<Icon name="google" size={20} />}
           />
         <ButtonCom  text='Sign Up with Apple' buttonstyle={styles.buttonstyle3} textstyle={styles.txt} icon={<Icon2 name="apple" size={20} />} />

@@ -6,16 +6,19 @@ import { colors } from '../../theme/color';
 
 type propes = {
   color? : string
+  onSelectCountry : (item : any) => void
 }
 
-const CountryPickerScreen = ({color}:propes) => {
-  const [country, setCountry] = useState('Paksistan');
+const CountryPickerScreen = ({color,onSelectCountry}:propes) => {
+  const [country, setCountry] = useState();
   const [isVisible, setIsVisible] = useState(false);
-  const [countryimg , setCountryimg] = useState('https://flagcdn.com/w40/pk.png')
+  const [countryimg , setCountryimg] = useState()
   const handleSelectCountry = (item: any) => {
     setCountryimg(item.flag)
     setCountry(item.name);
     setIsVisible(false);
+    console.log(item.name)
+    onSelectCountry(item.name.toString())
   };
 
   return (

@@ -14,7 +14,7 @@ import VarifyPhoneNumber from '../screens/reset/VarifyPhoneNumber';
 const NoAuthScreen = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="ScreenOne" component={Onboarding} />
+      <Stack.Screen name="Onboarding" component={Onboarding} />
       <Stack.Screen name="ScreenTwo" component={OnboardingScreenTwo} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />

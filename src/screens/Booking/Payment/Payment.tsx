@@ -20,6 +20,7 @@ import { useNavigation } from '@react-navigation/native';
 type navigation = StackNavigationProp<RootStackParamList, 'Confirmation'>;
 
 const Payment = () => {
+  const [country, setCountry] = useState('');
     const navigate = useNavigation<navigation>();
   const [isVisible, setIsVisible] = useState(false);
   const [isSelected, setSelection] = useState(false);
@@ -90,7 +91,7 @@ const Payment = () => {
         >
           Country or region
         </Text>
-        <CountryPickerScreen color="white" />
+        <CountryPickerScreen onSelectCountry={(value) => setCountry(value)} color="white" />
         <InputCom
           data={{
             placeholder: 'Zip Code',

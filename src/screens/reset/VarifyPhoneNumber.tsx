@@ -15,7 +15,7 @@ type NavigationProp = StackNavigationProp<RootStackParamList>;
 const VarifyPhoneNumber = () => {
   const navigation = useNavigation<NavigationProp>();
   const [number, setnumber] = useState('');
-
+const [country,setCountry] = useState('')
   return (
     <ScrollView
       contentContainerStyle={styles.scrollContainer}
@@ -33,7 +33,7 @@ const VarifyPhoneNumber = () => {
         </View>
 
         <View style={{ marginHorizontal: 20, marginTop: 20 }}>
-         <CountryPickerScreen/>
+          <CountryPickerScreen onSelectCountry={(value) => setCountry(value)} color="white" />
           <InputCom
             data={{
               placeholder: 'Phone Number',
